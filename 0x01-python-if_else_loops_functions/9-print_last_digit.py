@@ -6,6 +6,3 @@ def print_last_digit(number: int) -> int:
     dig = -last_digit + 10 if number < 0 else last_digit
     print(dig, end='')
     return(dig)
-
-
-print_last_digit(98)
