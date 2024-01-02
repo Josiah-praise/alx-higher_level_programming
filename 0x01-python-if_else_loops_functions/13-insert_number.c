@@ -13,7 +13,7 @@ listint_t *insert_node(listint_t **head, int number)
 	listint_t *new_node = NULL;
 
 	/*check if list is empty*/
-	if (head == NULL || *head == NULL)
+	if (head == NULL )
 		return (NULL);
 
 	/*malloc space for new node*/
@@ -22,16 +22,15 @@ listint_t *insert_node(listint_t **head, int number)
 		return (NULL);
 	new_node->n = number;
 	new_node->next = NULL;
-
-	/*if number is the smallest, update first node*/
+	if (*head == NULL)
+		*head = new_node;
     if (current->n > number)
     {
 		new_node->next = current;
 		*head = new_node;
 		return (*head);
     }
-	/*move up one node*/
-	previous = current;
+	previous = current;	/*move up one node*/
 	current = current->next;
 	/*number is neither the smallest nor the largest*/
 	while (current)
