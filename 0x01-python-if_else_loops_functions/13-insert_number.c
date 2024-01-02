@@ -8,13 +8,13 @@
  */
 listint_t *insert_node(listint_t **head, int number)
 {
-	/*check if list is empty*/
-	if (head == NULL || *head == NULL)
-		return (NULL);
-
 	listint_t *previous = NULL;
 	listint_t *current = *head;
 	listint_t *new_node = NULL;
+
+	/*check if list is empty*/
+	if (head == NULL || *head == NULL)
+		return (NULL);
 
 	/*malloc space for new node*/
 	new_node = malloc(sizeof(listint_t));
@@ -45,7 +45,6 @@ listint_t *insert_node(listint_t **head, int number)
 		previous = current;
 		current = current->next;
 	}
-
 	/*update last node if number is the largest*/
 	previous->next = new_node;
 	return (new_node);
