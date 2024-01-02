@@ -3,4 +3,9 @@
 def print_last_digit(number: int) -> int:
     """print last digit"""
     last_digit = number % 10
-    return -last_digit + 10 if number < 0 else last_digit
+    dig = -last_digit + 10 if number < 0 else last_digit
+    print(dig, end='')
+    return(dig)
+
+
+print_last_digit(98)

@@ -3,5 +3,5 @@
 def uppercase(str: str) -> None:
     """converts to uppercase """
     for _ in str:
-        print(_, end='')
+        print('{}'.format(_), end='')
     print('')
