@@ -2,4 +2,4 @@
 a = 97
 z = 122
 for _ in range(a, (z + 1)):
-    print(f"{chr(_)}", end='')
+    print("{0}".format(chr(_)), end='')
