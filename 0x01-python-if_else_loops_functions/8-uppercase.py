@@ -7,4 +7,3 @@ def uppercase(str: str) -> None:
     print('')
 
 
-uppercase("holberton")
