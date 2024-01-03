@@ -3,5 +3,8 @@
 def uppercase(str: str) -> None:
     """converts to uppercase """
     for _ in str:
-        print('{}'.format(_), end='')
+        print('{}'.format(chr(ord(_)-32)), end='')
     print('')
+
+
+uppercase("holberton")
