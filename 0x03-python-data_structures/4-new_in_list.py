@@ -1,10 +1,10 @@
-#!/bin/bash/python3
+#!/usr/bin/python3
 def new_in_list(my_list, idx, element):
-    """replaces an element at idx without modifying
-    original list"""
-    if idx < 0 or idx > (len(my_list) - 1):
-        return my_list
-    else:
-        newList = my_list.copy()
-        newList[idx] = element
-    return newList
+    """Return a copy of a list without an element at a specific position."""
+
+    copy = my_list.copy()
+
+    if idx in range(len(my_list)):
+        copy[idx] = element
+
+    return (copy)
