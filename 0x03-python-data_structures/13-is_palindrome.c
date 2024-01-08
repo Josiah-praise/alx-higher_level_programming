@@ -4,7 +4,8 @@
  * @head: pointer to head
  * Return: pointer to head
  */
-listint_t *reverse(listint_t **head){
+listint_t *reverse(listint_t **head)
+{
 	if (head == NULL || *head == NULL)
 		return (NULL);
 
@@ -13,7 +14,8 @@ listint_t *reverse(listint_t **head){
 	current = *head;
 	previous = NULL;
 
-	while (current){
+	while (current)
+	{
 		next = current->next;
 		current->next = previous;
 		previous = current;
@@ -37,7 +39,7 @@ int is_palindrome(listint_t **head)
 
 	slow = *head;
 	fast = *head;
-	while(fast && fast->next)
+	while (fast && fast->next)
 	{
 		slow = slow->next;
 		fast = fast->next->next;
@@ -48,7 +50,7 @@ int is_palindrome(listint_t **head)
 	slow = reverse(&slow);
 
 	fast = *head;
-	while(slow)
+	while (slow)
 	{
 		if (slow->n != fast->n)
 			return (0);
