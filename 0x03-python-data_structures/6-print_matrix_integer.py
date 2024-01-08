@@ -1,13 +1,13 @@
 #!/usr/bin/python3
-
 def print_matrix_integer(matrix=[[]]):
     """prints a matrix of integers"""
-    for _ in range(len(matrix)):
-        if len(matrix[_]) == 0:
+
+    for _, value in enumerate(matrix):
+        if not value:
             print('')
             continue
-        for i in range(len(matrix[_])):
+        for i, element in enumerate(matrix[_]):
             if i == (len(matrix[_]) - 1):
-                print("{}".format(matrix[_][i]))
+                print("{:d}".format(element))
                 continue
-            print("{}".format(matrix[_][i]), end=' ')
+            print("{:d}".format(element), end=' ')
