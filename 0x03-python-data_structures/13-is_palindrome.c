@@ -1,80 +1,61 @@
 #include "lists.h"
-
 /**
- * len_list - Count the elements of the list.
- * @h: The head of the linked list.
- * Return: Size of the list.
+ * reverse - reverses a linked list
+ * @head: pointer to head
+ * Return: pointer to head
  */
-size_t len_list(listint_t *h)
+listint_t *reverse(listint_t **head)
 {
-	size_t len = 0;
+	if (head == NULL || *head == NULL)
+		return (NULL);
 
-	for (; h; h = h->next)
-		len++;
-	return (len);
-}
+	listint_t *current, *previous, *next;
 
-/**
- * rev_list - Revert the direction of a single list.
- * @head: A pointer to the head of the linked list.
- * Return: A head of the reverted list.
- */
-listint_t *rev_list(listint_t **head)
-{
-	listint_t *prev = NULL, *next = NULL, *current = NULL;
+	current = *head;
+	previous = NULL;
 
-	for (current = *head; current;)
+	while (current)
 	{
 		next = current->next;
-		current->next = prev;
-		prev = current;
+		current->next = previous;
+		previous = current;
 		current = next;
 	}
-
-	*head = prev;
+	*head = previous;
 	return (*head);
 }
 
 /**
- * is_palindrome - Check if a singly linked list is a palindrome.
- * @head: A pointer to the head of the linked list.
- * Return: 0 if it is not a palindrome, 1 if it is a palindrome.
+ * is_palindrome - checks if a singly linked list is a palindrome
+ * @head: pointer to the head
+ * Return: 1 if it's a palindrome and 0 if it isn't
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *tmp, *half_rev, *tmp_rev;
-	size_t len = 0, i;
-
-	if (*head == NULL || (*head)->next == NULL)
-		return (1);
-
-	tmp = *head;
-	len = len_list(tmp);
-
-	/*Go to the middle*/
-	tmp = *head;
-	for (i = 0; i < (len / 2) - 1; i++)
-		tmp = tmp->next;
-
-	/*If the the list has exact middle: Compare the next node*/
-	if ((len % 2) == 0 && tmp->n != tmp->next->n)
+	if (head == NULL || *head == NULL)
 		return (0);
 
-	tmp = tmp->next->next;
+	listint_t *fast, *slow;
 
-	/*"Reverse the second middle of the list*/
-	half_rev = rev_list(&tmp);
-	tmp_rev = half_rev;
-
-	/*Compare the two middles*/
-	for (tmp = *head; half_rev;)
+	slow = *head;
+	fast = *head;
+	while (fast && fast->next)
 	{
-		if (tmp->n != half_rev->n)
-			return (0);
-		tmp = tmp->next;
-		half_rev = half_rev->next;
+		slow = slow->next;
+		fast = fast->next->next;
 	}
-	rev_list(&tmp_rev);
+	if (fast)
+		slow = slow->next;
 
+	slow = reverse(&slow);
+
+	fast = *head;
+	while (slow)
+	{
+		if (slow->n != fast->n)
+			return (0);
+		slow = slow->next;
+		fast = fast->next;
+	}
 	return (1);
 }
