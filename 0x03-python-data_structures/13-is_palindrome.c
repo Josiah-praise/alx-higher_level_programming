@@ -1,61 +1,80 @@
 #include "lists.h"
+
 /**
- * reverse - reverses a linked list
- * @head: pointer to head
- * Return: pointer to head
+ * len_list - Count the elements of the list.
+ * @h: The head of the linked list.
+ * Return: Size of the list.
  */
-listint_t *reverse(listint_t **head)
+size_t len_list(listint_t *h)
 {
-	if (head == NULL || *head == NULL)
-		return (NULL);
+	size_t len = 0;
 
-	listint_t *current, *previous, *next;
+	for (; h; h = h->next)
+		len++;
+	return (len);
+}
 
-	current = *head;
-	previous = NULL;
+/**
+ * rev_list - Revert the direction of a single list.
+ * @head: A pointer to the head of the linked list.
+ * Return: A head of the reverted list.
+ */
+listint_t *rev_list(listint_t **head)
+{
+	listint_t *prev = NULL, *next = NULL, *current = NULL;
 
-	while (current)
+	for (current = *head; current;)
 	{
 		next = current->next;
-		current->next = previous;
-		previous = current;
+		current->next = prev;
+		prev = current;
 		current = next;
 	}
-	*head = previous;
+
+	*head = prev;
 	return (*head);
 }
 
 /**
- * is_palindrome - checks if a singly linked list is a palindrome
- * @head: pointer to the head
- * Return: 1 if it's a palindrome and 0 if it isn't
+ * is_palindrome - Check if a singly linked list is a palindrome.
+ * @head: A pointer to the head of the linked list.
+ * Return: 0 if it is not a palindrome, 1 if it is a palindrome.
  */
 int is_palindrome(listint_t **head)
 {
-	if (head == NULL || *head == NULL)
+	listint_t *tmp, *half_rev, *tmp_rev;
+	size_t len = 0, i;
+
+	if (*head == NULL || (*head)->next == NULL)
+		return (1);
+
+	tmp = *head;
+	len = len_list(tmp);
+
+	/*Go to the middle*/
+	tmp = *head;
+	for (i = 0; i < (len / 2) - 1; i++)
+		tmp = tmp->next;
+
+	/*If the the list has exact middle: Compare the next node*/
+	if ((len % 2) == 0 && tmp->n != tmp->next->n)
 		return (0);
 
-	listint_t *fast, *slow;
+	tmp = tmp->next->next;
 
-	slow = *head;
-	fast = *head;
-	while (fast && fast->next)
+	/*"Reverse the second middle of the list*/
+	half_rev = rev_list(&tmp);
+	tmp_rev = half_rev;
+
+	/*Compare the two middles*/
+	for (tmp = *head; half_rev;)
 	{
-		slow = slow->next;
-		fast = fast->next->next;
-	}
-	if (fast)
-		slow = slow->next;
-
-	slow = reverse(&slow);
-
-	fast = *head;
-	while (slow)
-	{
-		if (slow->n != fast->n)
+		if (tmp->n != half_rev->n)
 			return (0);
-		slow = slow->next;
-		fast = fast->next;
+		tmp = tmp->next;
+		half_rev = half_rev->next;
 	}
+	rev_list(&tmp_rev);
+
 	return (1);
 }
