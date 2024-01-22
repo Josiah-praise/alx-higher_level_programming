@@ -11,3 +11,6 @@ def print_matrix_integer(matrix=[[]]):
                 print("{:d}".format(element))
                 continue
             print("{:d}".format(element), end=' ')
+
+
+print_matrix_integer([[1,2,3], [4,5,6]])
