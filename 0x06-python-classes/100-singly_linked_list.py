@@ -77,8 +77,3 @@ class SinglyLinkedList:
         """calls the display function"""
         self.__display()
         return ""
-
-
-n = Node(5)
-n.next_node = "Node"
-print(n.data)
