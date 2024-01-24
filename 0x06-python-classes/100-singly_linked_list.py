@@ -33,7 +33,7 @@ class Node:
     def next_node(self, value):
         """self.__next_node setter method"""
         if not (value is None or isinstance(value, Node)):
-            raise TypeError("next_node must be a node object")
+            raise TypeError("next_node must be a Node object")
         self.__next_node = value
 
 
@@ -77,3 +77,8 @@ class SinglyLinkedList:
         """calls the display function"""
         self.__display()
         return ""
+
+
+n = Node(5)
+n.next_node = "Node"
+print(n.data)
