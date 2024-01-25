@@ -76,10 +76,3 @@ class Square:
                 )
             )
         return True if self.__size >= value.size else False
-
-
-s1 = Square(4)
-s2 = Square(4.4)
-print(s1 < s2, "s1:{}, s2:{}".format(s1.size, s2.size))
-
-print(s1 > "tyu", "s1:{}, s2:{}".format(s1.size, s2.size))
