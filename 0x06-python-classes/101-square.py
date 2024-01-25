@@ -76,3 +76,13 @@ class Square:
                 )
             )
         return True if self.__size >= value.size else False
+
+    def __ne__(self, value):
+        """implements the != operator"""
+        if not isinstance(value, Square):
+            raise TypeError(
+                "unsupported operand type(s) for !=" ":'{}' and '{}'".format(
+                    type(self).__name__, type(value).__name__
+                )
+            )
+        return True if self.__size != value.size else False
