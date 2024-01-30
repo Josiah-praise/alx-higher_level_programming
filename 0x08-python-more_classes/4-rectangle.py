@@ -44,25 +44,28 @@ class Rectangle:
 
     def perimeter(self):
         """calculates the perimeter"""
-        return 0 if self.__width == 0\
-            or self.__height == 0 else 2 * (self.__width + self.__height)
+        return (
+            0
+            if self.__width == 0 or self.__height == 0
+            else 2 * (self.__width + self.__height)
+        )
 
     def __display_rectangle(self):
         """displays the rectangle with #"""
         if self.__width == 0 or self.__height == 0:
-            print('', end='')
+            print("", end="")
             return None
         for _ in range(self.__height):
             if _ < self.height - 1:
-                print('#' * self.__width)
+                print("#" * self.__width)
             else:
-                print('#' * self.__width, end="")
+                print("#" * self.__width, end="")
 
     def __str__(self):
         """returns string representation"""
         self.__display_rectangle()
-        return ''
+        return ""
 
     def __repr__(self) -> str:
         """return a fromal string representation"""
-        return f"Rectangle(width={self.__width}, height={self.__height})"
+        return f"Rectangle({self.__width}, {self.__height})"
