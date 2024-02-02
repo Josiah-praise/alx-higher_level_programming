@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Max integer - Unittest"""
 import unittest
-from .. import max_integer
+
 
 def max_integer(list=[]):
     """Function to find and return the max integer in a list of integers
@@ -17,12 +17,13 @@ def max_integer(list=[]):
         i += 1
     return result
 
+
 class Max_integer_test(unittest.TestCase):
     """max int tests"""
- 
+
     def test_list_of_int(self):
         """tests a lsit of integers"""
-        self.assertEqual(20, max_integer([1,9,2,14,20]))
+        self.assertEqual(20, max_integer([1, 9, 2, 14, 20]))
 
     def test_empty_list(self):
         """test for empty list"""
@@ -51,7 +52,3 @@ class Max_integer_test(unittest.TestCase):
     def test_floats(self):
         """list of floats"""
         self.assertEqual(7.8, max_integer([3.4, 6.7, 7.8]))
-
-
-    if __name__ == "__main__":
-        unittest.main()
