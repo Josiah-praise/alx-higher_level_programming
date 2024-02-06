@@ -9,7 +9,7 @@ def pascal_triangle(n):
     '''
     current = [1]
     if n <= 0:  # rerturn empty list if n is 0 or less
-        return [[]]
+        return []
 
     def pascal_recursive(list_):
         '''recurcsive solution'''
