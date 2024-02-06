@@ -8,7 +8,7 @@ def pascal_triangle(n):
     representing the Pascal's triangle of n
     '''
     current = [1]
-    if n == 0:  # rerturn empty list if is 0
+    if n <= 0:  # rerturn empty list if n is 0 or less
         return [[]]
 
     def pascal_recursive(list_):
