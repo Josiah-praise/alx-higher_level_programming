@@ -222,3 +222,6 @@ class TestBase_load_from_file(unittest.TestCase):
     def test_load_none_file(self):
         list_squares_output = Square.load_from_file()
         self.assertEqual([], list_squares_output)
+
+if __name__ == "__main__":
+    unittest.main()

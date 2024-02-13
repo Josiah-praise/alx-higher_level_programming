@@ -146,3 +146,6 @@ class TestSquare_to_dictionary(unittest.TestCase):
         exp = {'id': s.id, 'x': 2, 'size': 10, 'y': 1}
         real = s.to_dictionary()
         self.assertEqual(exp, real)
+
+if __name__ == "__main__":
+    unittest.main()

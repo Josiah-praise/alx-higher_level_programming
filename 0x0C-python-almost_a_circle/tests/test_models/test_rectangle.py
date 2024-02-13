@@ -156,3 +156,7 @@ class TestRectangle_to_dictionary(unittest.TestCase):
         exp = {'id': r.id, 'width': 10, 'height': 2, 'x': 1, 'y': 9}
         real = r.to_dictionary()
         self.assertEqual(exp, real)
+
+
+if __name__ == "__main__":
+    unittest.main()
