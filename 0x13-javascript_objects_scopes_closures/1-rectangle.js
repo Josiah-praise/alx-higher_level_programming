@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-module.exports = class {
+module.exports = class Rectangle{
   width;
   height;
   constructor (w, h) {
