@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
 exports.converter = function (base) {
-  function doer(num) {
+  function doer (num) {
     if (Math.floor(num / base) === 0) {
       return (num % base).toString();
     } else {
