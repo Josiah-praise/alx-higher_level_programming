@@ -12,11 +12,12 @@ def get_all_states():
     import MySQLdb
     import sys
 
-    db = MySQLdb.Connection(
+    db = MySQLdb.connect(
         user=sys.argv[1],
         passwd=sys.argv[2],
         host='localhost',
-        db=sys.argv[3])
+        db=sys.argv[3],
+        port=3306)
 
     with db.cursor() as cursor:
         cursor.execute('SELECT * FROM STATES ORDER BY id')
