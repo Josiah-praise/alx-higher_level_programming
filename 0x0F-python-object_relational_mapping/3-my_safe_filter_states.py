@@ -8,7 +8,8 @@ argument given from the database
 
 def filter_states():
     '''
-    list all states from database hbtn_0e_0_usa
+    list all states from database hbtn_0e_0_usa that match
+    the argument passsed to the script
     '''
 
     import MySQLdb
@@ -23,7 +24,7 @@ def filter_states():
 
     with db.cursor() as cursor:
         cursor.execute("SELECT * FROM states\
-            WHERE name LIKE BINARY %s ORDER BY states.id ASC", (sys.argv[4],))
+            WHERE name = %s ORDER BY states.id ASC", (sys.argv[4],))
         result = cursor.fetchall()
         for row in result:
             print(row)
