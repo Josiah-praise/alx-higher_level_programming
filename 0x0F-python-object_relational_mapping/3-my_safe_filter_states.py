@@ -23,7 +23,7 @@ def filter_states():
 
     with db.cursor() as cursor:
         cursor.execute("SELECT * FROM states\
-            WHERE name LIKE BINARY %s ORDER BY id ASC", (sys.argv[4],))
+            WHERE name LIKE BINARY %s ORDER BY states.id ASC", (sys.argv[4],))
         result = cursor.fetchall()
         for row in result:
             print(row)
