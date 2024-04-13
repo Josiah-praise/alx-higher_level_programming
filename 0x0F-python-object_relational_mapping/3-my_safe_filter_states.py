@@ -1,33 +1,21 @@
 #!/usr/bin/python3
 
+
+import MySQLdb
+from sys import argv
+
 '''
-lists all states with a name that matches the
-argument given from the database
+script that lists all states from the database
 '''
-
-
-def filter_states():
-    '''
-    list all states from database hbtn_0e_0_usa
-    '''
-
-    import MySQLdb
-    import sys
-
-    db = MySQLdb.connect(
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        host='localhost',
-        db=sys.argv[3],
-        port=3306)
-
-    with db.cursor() as cursor:
-        cursor.execute("SELECT * FROM states\
-            WHERE name LIKE BINARY %s ", (sys.argv[4],))
-        result = cursor.fetchall()
-        for row in result:
-            print(row)
-
-
-if __name__ == '__main__':
-    filter_states()
+if __name__ == "__main__":
+    cont = MySQLdb.connect(
+        host="localhost", port=3306, user=argv[1],
+        password=argv[2], database=argv[3])
+    cursor = cont.cursor()
+    cursor.execute(
+        "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC",
+        (argv[4],)
+        )
+    db = cursor.fetchall()
+    for i in db:
+        print(i)
