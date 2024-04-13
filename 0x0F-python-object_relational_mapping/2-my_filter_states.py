@@ -6,7 +6,7 @@ argument given from the database
 '''
 
 
-def list_all_states():
+def filter_states():
     '''
     list all states from database hbtn_0e_0_usa
     '''
@@ -30,4 +30,4 @@ def list_all_states():
 
 
 if __name__ == '__main__':
-    list_all_states()
+    filter_states()
