@@ -23,7 +23,7 @@ def filter_states():
 
     with db.cursor() as cursor:
         cursor.execute("SELECT * FROM states\
-            WHERE name = %s", (sys.argv[4],))
+            WHERE name = '{}'".format(sys.argv[4]))
 
         for row in cursor.fetchall():
             print(row)
