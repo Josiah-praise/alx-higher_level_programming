@@ -20,7 +20,7 @@ def get_all_states():
         port=3306)
 
     with db.cursor() as cursor:
-        cursor.execute('SELECT * FROM STATES ORDER BY id')
+        cursor.execute('SELECT * FROM STATES')
 
         for row in cursor.fetchall():
             print(row)

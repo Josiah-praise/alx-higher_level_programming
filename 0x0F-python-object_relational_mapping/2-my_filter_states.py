@@ -22,8 +22,8 @@ def list_all_states():
         port=3306)
 
     with db.cursor() as cursor:
-        cursor.execute("SELECT * FROM tv_genres\
-            WHERE name = %s ORDER BY id", (sys.argv[4],))
+        cursor.execute("SELECT * FROM states\
+            WHERE name = %s", (sys.argv[4],))
 
         for row in cursor.fetchall():
             print(row)
