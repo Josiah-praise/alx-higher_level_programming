@@ -1,3 +1,8 @@
+#!/usr/bin/python3
+
+"""This script takes in an argument and displays all values in the `states`
+table of the database `hbtn_0e_0_usa` where the `name` matches the argument."""
+
 if __name__ == "__main__":
     import sys
     import MySQLdb
