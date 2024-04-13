@@ -1,34 +1,33 @@
-#!/usr/bin/python3
-
-'''
-lists all states with a name that matches the
-argument given from the database
-'''
-
-
-def filter_states():
-    '''
-    list all states from database hbtn_0e_0_usa that match
-    the argument passsed to the script
-    '''
-
-    import MySQLdb
+if __name__ == "__main__":
     import sys
+    import MySQLdb
 
-    db = MySQLdb.connect(
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        host='localhost',
-        db=sys.argv[3],
-        port=3306)
+    username, password, db_name, state_name = sys.argv[1:]
 
-    with db.cursor() as cursor:
-        cursor.execute("SELECT * FROM states\
-            WHERE name = %s ORDER BY states.id ASC", (sys.argv[4],))
-        result = cursor.fetchall()
-        for row in result:
-            print(row)
+    conn = MySQLdb.connect(
+        host="localhost",
+        user=username,
+        password=password,
+        database=db_name,
+        port=3306,
+    )
 
+    cursor = conn.cursor()
 
-if __name__ == '__main__':
-    filter_states()
+    # The query is written in a way that is safe from SQL injection
+    cursor.execute(
+        """
+        SELECT * FROM states
+        WHERE name = %s
+        ORDER BY states.id;
+        """,
+        (state_name,),
+    )
+
+    result_set = cursor.fetchall()
+
+    for row in result_set:
+        print(row)
+
+    cursor.close()
+    conn.close()
