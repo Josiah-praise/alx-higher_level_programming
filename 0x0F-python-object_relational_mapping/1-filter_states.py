@@ -21,7 +21,7 @@ def list_all_states():
         port=3306)
 
     with db.cursor() as cursor:
-        cursor.execute("SELECT * FROM states WHERE name LIKE 'T%")
+        cursor.execute("SELECT * FROM states WHERE name LIKE 'T%'")
 
         for row in cursor.fetchall():
             print(row)
