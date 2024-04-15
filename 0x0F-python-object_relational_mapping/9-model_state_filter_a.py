@@ -25,7 +25,7 @@ def fetch_state():
 
     session = sessionmaker(bind=engine)
     session = session()
-    result = session.query(State).filter(State.name.like('%arrt%'))
+    result = session.query(State).filter(State.name.like('%a%'))
 
     for row in result:
         print(f'{row.id}: {row.name}')
